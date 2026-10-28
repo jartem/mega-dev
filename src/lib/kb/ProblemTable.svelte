@@ -1,21 +1,21 @@
 <script lang="ts">
   import reports from '#lib/data/reports-4471.json';
-  import notes from '#lib/data/desk-notes.json';
-  import type { Report } from '#lib/kb/causes';
+  import { groupByCause, uniqueById, type Cause, type Report } from '#lib/kb/causes';
   import { tenantOf } from '#lib/kb/locales';
-  import { PROBLEMS, splitTicket, type Problem } from '#lib/kb/problems';
 
-  // tickets: where each problem is filed now, problem → issue URL.
-  let { ticket, tickets = {} }: { ticket: number; tickets?: Partial<Record<Problem, string>> } = $props();
+  // tickets: where each cause is filed now, cause → issue URL.
+  let { ticket, tickets = {} }: { ticket: number; tickets?: Partial<Record<Cause | 'unplaced', string>> } = $props();
 
-  const split = $derived(splitTicket(reports as Report[], ticket, tenantOf, notes.oneDayMove));
+  const rows = $derived((reports as Report[]).length);
+  const merged = $derived(uniqueById(reports as Report[]).filter((r) => r.mergedInto === ticket));
+  const groups = $derived(groupByCause(merged, tenantOf));
   const issue = (url: string) => `#${url.split('/').pop()}`;
 </script>
 
 <p class="sum">
-  <strong>{split.merged.length}</strong> reports in #{ticket} ({split.rows - split.merged.length} repeated rows in the export dropped) ·
-  <strong>{split.groups.length}</strong>
-  {split.groups.length === 1 ? 'problem' : 'problems'}
+  <strong>{merged.length}</strong> reports in #{ticket} ({rows - merged.length} repeated rows in the export dropped) ·
+  <strong>{groups.length}</strong>
+  {groups.length === 1 ? 'problem' : 'problems'}
 </p>
 
 <table>
@@ -23,15 +23,14 @@
     <tr><th>problem</th><th>reports</th><th>tenants</th><th>seen</th><th>ticket</th></tr>
   </thead>
   <tbody>
-    {#each split.groups as g (g.problem)}
+    {#each groups as g (g.cause)}
+      {@const url = tickets[g.cause]}
       <tr>
-        <td><code>{g.problem}</code> {PROBLEMS[g.problem]}</td>
+        <td><code>{g.cause}</code></td>
         <td>{g.reports.length}</td>
         <td>{g.tenants}</td>
         <td>{g.firstSeen} → {g.lastSeen}</td>
-        <td>
-          {#if tickets[g.problem]}<a href={tickets[g.problem]}>{issue(tickets[g.problem]!)}</a>{:else}<span class="none">none yet</span>{/if}
-        </td>
+        <td>{#if url}<a href={url}>{issue(url)}</a>{:else}<span class="none">none yet</span>{/if}</td>
       </tr>
     {/each}
   </tbody>
