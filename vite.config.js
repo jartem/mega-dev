@@ -9,7 +9,8 @@ const runbook = fileURLToPath(new URL('./src/lib/layouts/runbook.svelte', import
 export default defineConfig({
   plugins: [
     sveltekit({
-      adapter: adapter({ fallback: undefined }),
+      adapter: adapter({ pages: 'docs', assets: 'docs', fallback: undefined }),
+      paths: { base: process.env.BASE_PATH ?? '' },
       extensions: ['.svelte', '.svx'],
       preprocess: [mdsvex({ extensions: ['.svx'], layout: { runbook } })],
       prerender: { entries: ['*'], handleHttpError: 'warn' },
