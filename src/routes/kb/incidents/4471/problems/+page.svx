@@ -13,7 +13,11 @@ signature: Jarosław Tempski
   import Callout from '#lib/kb/Callout.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 
-  const tickets = {};
+  const tickets = {
+    parser: 'https://github.com/jartem/mega-dev/issues/1',
+    hint: 'https://github.com/jartem/mega-dev/issues/2',
+    shift: 'https://github.com/jartem/mega-dev/issues/3',
+  };
 </script>
 
 [#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. Its reports describe
