@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [
     sveltekit({
       adapter: adapter({ pages: 'docs', assets: 'docs', fallback: undefined }),
-      paths: { base: process.env.BASE_PATH ?? '' },
+      paths: { base: process.env.BASE_PATH ?? '', relative: false },
       extensions: ['.svelte', '.svx'],
       preprocess: [mdsvex({ extensions: ['.svx'], layout: { runbook } })],
       prerender: { entries: ['*'], handleHttpError: 'warn' },
