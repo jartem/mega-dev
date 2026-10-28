@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "imports": {
-    "#lib/*": "./apps/kb/lib/*"
+    "#lib/*": "./src/lib/*"
   },
   "scripts": {
     "dev": "vite dev",

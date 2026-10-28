@@ -4,12 +4,11 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { mdsvex } from 'mdsvex';
 import { defineConfig } from 'vite';
 
-const runbook = fileURLToPath(new URL('./apps/kb/lib/layouts/runbook.svelte', import.meta.url));
+const runbook = fileURLToPath(new URL('./src/lib/layouts/runbook.svelte', import.meta.url));
 
 export default defineConfig({
   plugins: [
     sveltekit({
-      files: { src: 'apps/kb', routes: 'apps/kb/routes', appTemplate: 'apps/kb/app.html' },
       adapter: adapter({ fallback: undefined }),
       extensions: ['.svelte', '.svx'],
       preprocess: [mdsvex({ extensions: ['.svx'], layout: { runbook } })],
