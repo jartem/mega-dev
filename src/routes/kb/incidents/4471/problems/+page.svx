@@ -1,0 +1,52 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: Jarosław Tempski
+status: open
+reviewed: 2026-10-28
+signature: Jarosław Tempski
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const tickets = {};
+</script>
+
+[#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. Its reports describe
+three different bugs. One fix closes only one of them.
+
+<Callout kind="warn">
+#4471 is not one issue. Each problem below has its own ticket now. Close #4471 only when all
+three are fixed.
+</Callout>
+
+## The problems
+
+<ProblemTable ticket={4471} {tickets} />
+
+- **`parser`**: the shared parser reads every date month first. Our tenants write the day
+  first, so day and month swap. This is the fix that #4471 queued.
+- **`hint`**: the `booking-v3` form prints `MM/DD/YYYY` under its date field. People type what
+  the hint says, and the form reads the date the tenant's way, day first. The parser fix does
+  not touch the form.
+- **`shift`**: the invite lands one day early or late. The day and month do not swap. Reporters
+  in two time zones get different days, and an invite can arrive before the booking. This is a
+  time zone bug. The desk read these reports as one-day moves (`desk-notes.json`), but the
+  table on #4471 counts them under `parser`.
+
+## How the reports were sorted
+
+- One id, one report. The export has repeated rows from overlapping pages.
+- The tenant decides the cause: its locale and its booking form (`causes.ts`). The intake tag
+  is a guess from the reporter's browser, and it is wrong for many of these reports.
+- Subject lines do not separate the problems. The same subjects appear under all three.
+
+For comparison, the table on #4471 as the desk built it:
+
+<CauseTable ticket={4471} />
+
+<RenderStamp {signature} />
