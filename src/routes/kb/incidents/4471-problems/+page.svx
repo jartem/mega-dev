@@ -4,7 +4,7 @@ title: '#4471 · two problems, not one'
 owner: Jarosław Tempski
 status: closed
 reviewed: 2026-10-28
-signature: Jarosław Tempski
+signature: jartem
 ---
 
 <script>

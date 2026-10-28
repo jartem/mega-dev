@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "postbuild": "node scripts/base-links.mjs",
     "preview": "vite preview"
   },
   "devDependencies": {
