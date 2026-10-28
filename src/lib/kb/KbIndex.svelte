@@ -1,11 +1,12 @@
 <script lang="ts">
+  import { resolve } from '$app/paths';
   import { daysSince, isoDay, STALE_AFTER_DAYS, type Day } from '#lib/kb/staleness';
 
   type Meta = { title: string; owner: string; status: string; reviewed: Day };
   const pages = import.meta.glob<{ metadata: Meta }>('/src/routes/kb/*/**/+page.svx', { eager: true });
 
   const rows = Object.entries(pages)
-    .map(([path, mod]) => ({ href: path.replace('/src/routes', '').replace('/+page.svx', ''), ...mod.metadata }))
+    .map(([path, mod]) => ({ href: resolve(path.replace('/src/routes', '').replace('/+page.svx', '') as '/'), ...mod.metadata }))
     .sort((x, y) => x.href.localeCompare(y.href));
 </script>
 
