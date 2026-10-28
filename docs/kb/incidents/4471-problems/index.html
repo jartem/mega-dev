@@ -25,7 +25,7 @@
 		<link href="/mega-dev/_app/immutable/assets/CauseTable.DuKfINX_.css" rel="stylesheet">
 		<link href="/mega-dev/_app/immutable/assets/_page.BZb6cwmm.css" rel="stylesheet">
   </head>
-  <body data-sveltekit-preload-data="hover">
+  <body data-sveltekit-reload>
     <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/mega-dev/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · two problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Jarosław Tempski</b></span> <span class="status closed svelte-e2jw2j">closed</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/mega-dev/kb/incidents/4471">#4471</a> was marked known: one issue, one fix queued. Its reports describe
 two different bugs, and each one got its own ticket and its own outcome.</p> <aside class="note svelte-17bri61"><!---->Engineering closed #4471 on 5 October. <code>parser</code> is fixed. <code>hint</code> will not be
 fixed, because the <code>booking-v3</code> form is retired. Both tickets are closed.<!----></aside><!----> <h2>The problems</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports in #4471 (15 repeated rows in the export dropped) · <strong>2</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td><code>parser</code></td><td>379</td><td>11</td><td>2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/jartem/mega-dev/issues/1">#1</a><!--]--></td></tr><tr><td><code>hint</code></td><td>33</td><td>3</td><td>2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/jartem/mega-dev/issues/2">#2</a><!--]--></td></tr><!--]--></tbody></table><!----> <ul><li><strong><code>parser</code></strong>: the shared parser reads every date month first. Our tenants write the day
@@ -36,16 +36,16 @@ is a guess from the reporter’s browser, and it is wrong for many of these repo
 			
 			<script>
 				{
-					__sveltekit_2zsju8 = {
+					__sveltekit_hu9ku = {
 						base: "/mega-dev",
-						version: "1793187552566",
+						version: "1793187658615",
 						assets: "/mega-dev"
 					};
 
 					const element = document.currentScript.parentElement;
 
 					import("/mega-dev/_app/immutable/entry/start.DsD-ZZFe.js").then(async (kit) => {
-						kit.init(__sveltekit_2zsju8);
+						kit.init(__sveltekit_hu9ku);
 						const app = await import("/mega-dev/_app/immutable/entry/app.DuEkSDgH.js");
 						kit.start(app, element, {
 							node_ids: [0, 6],

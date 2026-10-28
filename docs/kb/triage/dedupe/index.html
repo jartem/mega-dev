@@ -23,7 +23,7 @@
 		<link href="/mega-dev/_app/immutable/assets/Callout.AbLv9dM_.css" rel="stylesheet">
 		<link href="/mega-dev/_app/immutable/assets/_page.DO6Yid7X.css" rel="stylesheet">
   </head>
-  <body data-sveltekit-preload-data="hover">
+  <body data-sveltekit-reload>
     <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/mega-dev/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">Triage: duplicate reports</h1> <p class="meta svelte-e2jw2j"><span>owner <b>support desk</b></span> <span class="status accepted svelte-e2jw2j">accepted</span> <span class="svelte-e2jw2j stale">reviewed 2024-06-11 · 869 days ago · stale</span></p></header> <!--[0--><p class="banner svelte-e2jw2j">Nobody has re-read this page in 869 days. Check it against the live views before you rely on it.</p><!--]--> <main><p>A busy morning brings hundreds of reports about the same thing. We keep one ticket per issue
 and merge every duplicate into it, so engineering sees one thread with a count.</p> <h2>The rule</h2> <p>A report is a duplicate when its <strong>subject line matches</strong> the subject of an open ticket
 (<a href="/mega-dev/kb/decisions/0001-dedupe-by-subject">decision 0001</a>):</p> <ol><li>lowercase the subject and strip punctuation;</li> <li>look for an open ticket with the same subject;</li> <li>found one: merge the report into it. None: open a new ticket.</li></ol> <aside class="note svelte-17bri61"><!---->Matching on subject is fast and needs no reading. During an incident that matters more than
@@ -31,16 +31,16 @@ anything else.<!----></aside><!----> <h2>Try it</h2> <div class="try svelte-gq0h
 			
 			<script>
 				{
-					__sveltekit_2zsju8 = {
+					__sveltekit_hu9ku = {
 						base: "/mega-dev",
-						version: "1793187552566",
+						version: "1793187658615",
 						assets: "/mega-dev"
 					};
 
 					const element = document.currentScript.parentElement;
 
 					import("/mega-dev/_app/immutable/entry/start.DsD-ZZFe.js").then(async (kit) => {
-						kit.init(__sveltekit_2zsju8);
+						kit.init(__sveltekit_hu9ku);
 						const app = await import("/mega-dev/_app/immutable/entry/app.DuEkSDgH.js");
 						kit.start(app, element, {
 							node_ids: [0, 7],
