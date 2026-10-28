@@ -23,8 +23,8 @@ signature: Jarosław Tempski
 two different bugs, and each one got its own ticket and its own outcome.
 
 <Callout>
-Engineering closed #4471 on 5 October. `parser` is fixed. `hint` will not be fixed, because the
-`booking-v3` form is retired. Both tickets are closed.
+Engineering closed #4471 on 5 October. <code>parser</code> is fixed. <code>hint</code> will not be
+fixed, because the <code>booking-v3</code> form is retired. Both tickets are closed.
 </Callout>
 
 ## The problems
