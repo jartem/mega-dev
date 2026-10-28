@@ -2,7 +2,7 @@
 layout: runbook
 title: '#4471 · two problems, not one'
 owner: Jarosław Tempski
-status: open
+status: closed
 reviewed: 2026-10-28
 signature: Jarosław Tempski
 ---
@@ -19,12 +19,12 @@ signature: Jarosław Tempski
   };
 </script>
 
-[#4471](/kb/incidents/4471) is marked known: one issue, one fix queued. Its reports describe
-two different bugs. The queued fix closes only one of them.
+[#4471](/kb/incidents/4471) was marked known: one issue, one fix queued. Its reports describe
+two different bugs, and each one got its own ticket and its own outcome.
 
-<Callout kind="warn">
-#4471 is not one issue. Each problem below has its own ticket now. Close #4471 only when both
-are fixed.
+<Callout>
+Engineering closed #4471 on 5 October. `parser` is fixed. `hint` will not be fixed, because the
+`booking-v3` form is retired. Both tickets are closed.
 </Callout>
 
 ## The problems
@@ -32,10 +32,10 @@ are fixed.
 <ProblemTable ticket={4471} {tickets} />
 
 - **`parser`**: the shared parser reads every date month first. Our tenants write the day
-  first, so day and month swap. This is the fix that #4471 queued.
+  first, so day and month swap. Fixed: `fix(dates): parse dd/mm for eu locales`.
 - **`hint`**: the `booking-v3` form prints `MM/DD/YYYY` under its date field. People type what
   the hint says, and the form reads the date the tenant's way, day first. The parser fix does
-  not touch the form.
+  not touch the form. Won't fix: the `booking-v3` form is retired.
 
 ## How the reports were sorted
 
